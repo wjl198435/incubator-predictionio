@@ -75,14 +75,14 @@ python data/import_eventserver.py --access_key $ACCESS_KEY
      
 
 ## 三、数据分析及可视化
-   1.(可选)导出数据:$PIO_HOME/bin/pio export --appid 1 --output /tmp/movies --format parquet
-   2.启动zeppelin 服务：
+  ###  1.(可选)导出数据:$PIO_HOME/bin/pio export --appid 1 --output /tmp/movies --format parquet
+  ###  2.启动zeppelin 服务：
     zeppelin/zeppelin-0.7.3-bin-netinst/bin/zeppelin-daemon.sh start
-   3.http://localhost:8080
-   4.Create new note
-   5.Spark SQL 引擎创建临时表:
+  ###  3.http://localhost:8080
+  ###  4.Create new note
+  ###  5.Spark SQL 引擎创建临时表:
      sqlc.parquetFile("/tmp/movies").registerTempTable("events")
-   6.执行分析语句(统计总数分布)
+ ###   6.执行分析语句(统计总数分布)
     %sql
 SELECT entityType, event, targetEntityType, COUNT(*) AS c FROM events
 GROUP BY entityType, event, targetEntityType
